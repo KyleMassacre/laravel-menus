@@ -1,15 +1,10 @@
 # Laravel Menus
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/kylemassacre/laravel-menus.svg?style=flat-square)](https://packagist.org/packages/kylemassacre/laravel-menus)
-
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kylemassacre/laravel-menus/laravel.yml)
-
 [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/kylemassacre/laravel-menus.svg?style=flat-square)](https://scrutinizer-ci.com/g/kylemassacre/laravel-menus/?branch=master)
-
 ![Scrutinizer quality (GitHub/Bitbucket) with branch](https://img.shields.io/scrutinizer/quality/g/kylemassacre/laravel-menus/master?style=flat-square)
-
 [![Total Downloads](https://img.shields.io/packagist/dt/kylemassacre/laravel-menus.svg?style=flat-square)](https://packagist.org/packages/kylemassacre/laravel-menus)
 
 

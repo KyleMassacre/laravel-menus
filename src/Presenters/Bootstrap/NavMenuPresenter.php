@@ -5,7 +5,7 @@ namespace KyleMassacre\Menus\Presenters\Bootstrap;
 class NavMenuPresenter extends NavbarPresenter
 {
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
     public function getOpenTagWrapper()
     {
@@ -13,7 +13,7 @@ class NavMenuPresenter extends NavbarPresenter
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
     public function getMenuWithDropDownWrapper($item)
     {
@@ -34,7 +34,7 @@ class NavMenuPresenter extends NavbarPresenter
      *
      * @param \KyleMassacre\Menus\MenuItem $item
      *
-     * @return string`
+     * @return string
      */
     public function getMultiLevelDropdownWrapper($item)
     {

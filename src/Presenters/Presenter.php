@@ -2,7 +2,7 @@
 
 namespace KyleMassacre\Menus\Presenters;
 
-use KyleMassacre\Menus\MenuItem;
+use KyleMassacre\Menus\Contracts\MenuItemContract;
 
 abstract class Presenter implements PresenterInterface
 {
@@ -11,7 +11,7 @@ abstract class Presenter implements PresenterInterface
      *
      * @return string
      */
-    public function getOpenTagWrapper()
+    public function getOpenTagWrapper(): ?string
     {
     }
 
@@ -20,18 +20,18 @@ abstract class Presenter implements PresenterInterface
      *
      * @return string
      */
-    public function getCloseTagWrapper()
+    public function getCloseTagWrapper(): ?string
     {
     }
 
     /**
      * Get menu tag without dropdown wrapper.
      *
-     * @param \KyleMassacre\Menus\MenuItem $item
+     * @param MenuItemContract $item
      *
      * @return string
      */
-    public function getMenuWithoutDropdownWrapper($item)
+    public function getMenuWithoutDropdownWrapper(MenuItemContract $item): ?string
     {
     }
 
@@ -40,18 +40,18 @@ abstract class Presenter implements PresenterInterface
      *
      * @return string
      */
-    public function getDividerWrapper()
+    public function getDividerWrapper(): ?string
     {
     }
 
     /**
      * Get header dropdown tag wrapper.
      *
-     * @param \KyleMassacre\Menus\MenuItem $item
+     * @param MenuItemContract $item
      *
-     * @return string
+     * @return null|string
      */
-    public function getHeaderWrapper($item)
+    public function getHeaderWrapper(MenuItemContract $item): ?string
     {
     }
 
@@ -62,7 +62,7 @@ abstract class Presenter implements PresenterInterface
      *
      * @return string
      */
-    public function getMenuWithDropDownWrapper($item)
+    public function getMenuWithDropDownWrapper(MenuItemContract $item): ?string
     {
     }
 
@@ -73,7 +73,7 @@ abstract class Presenter implements PresenterInterface
      *
      * @return string
      */
-    public function getMultiLevelDropdownWrapper($item)
+    public function getMultiLevelDropdownWrapper(MenuItemContract $item): string
     {
     }
 
@@ -84,10 +84,10 @@ abstract class Presenter implements PresenterInterface
      *
      * @return string
      */
-    public function getChildMenuItems(MenuItem $item)
+    public function getChildMenuItems(MenuItemContract $item): string
     {
         $results = '';
-        foreach ($item->getChilds() as $child) {
+        foreach ($item->getChildren() as $child) {
             if ($child->hidden()) {
                 continue;
             }

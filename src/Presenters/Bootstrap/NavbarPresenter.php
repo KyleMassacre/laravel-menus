@@ -2,38 +2,39 @@
 
 namespace KyleMassacre\Menus\Presenters\Bootstrap;
 
+use KyleMassacre\Menus\Contracts\MenuItemContract;
 use KyleMassacre\Menus\Presenters\Presenter;
 
 class NavbarPresenter extends Presenter
 {
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getOpenTagWrapper()
+    public function getOpenTagWrapper(): ?string
     {
         return PHP_EOL . '<ul class="nav navbar-nav">' . PHP_EOL;
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getCloseTagWrapper()
+    public function getCloseTagWrapper(): ?string
     {
         return PHP_EOL . '</ul>' . PHP_EOL;
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getMenuWithoutDropdownWrapper($item)
+    public function getMenuWithoutDropdownWrapper(MenuItemContract $item): ?string
     {
         return '<li' . $this->getActiveState($item) . '><a href="' . $item->getUrl() . '" ' . $item->getAttributes() . '>' . $item->getIcon() . ' ' . $item->title . '</a></li>' . PHP_EOL;
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getActiveState($item, $state = ' class="active"')
+    public function getActiveState(MenuItemContract $item, string $state = ' class="active"'): ?string
     {
         return $item->isActive() ? $state : null;
     }
@@ -46,31 +47,31 @@ class NavbarPresenter extends Presenter
      *
      * @return null|string
      */
-    public function getActiveStateOnChild($item, $state = 'active')
+    public function getActiveStateOnChild(MenuItemContract $item, string $state = 'active'): ?string
     {
         return $item->hasActiveOnChild() ? $state : null;
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getDividerWrapper()
+    public function getDividerWrapper(): ?string
     {
         return '<li class="divider"></li>';
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getHeaderWrapper($item)
+    public function getHeaderWrapper(MenuItemContract $item): ?string
     {
         return '<li class="dropdown-header">' . $item->title . '</li>';
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getMenuWithDropDownWrapper($item)
+    public function getMenuWithDropDownWrapper(MenuItemContract $item): ?string
     {
         return '<li class="dropdown' . $this->getActiveStateOnChild($item, ' active') . '">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -87,11 +88,11 @@ class NavbarPresenter extends Presenter
     /**
      * Get multilevel menu wrapper.
      *
-     * @param \KyleMassacre\Menus\MenuItem $item
+     * @param MenuItemContract $item
      *
-     * @return string`
+     * @return string
      */
-    public function getMultiLevelDropdownWrapper($item)
+    public function getMultiLevelDropdownWrapper(MenuItemContract $item): string
     {
         return '<li class="dropdown' . $this->getActiveStateOnChild($item, ' active') . '">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -2,20 +2,22 @@
 
 namespace KyleMassacre\Menus\Presenters\Bootstrap;
 
+use KyleMassacre\Menus\Contracts\MenuItemContract;
+
 class NavbarRightPresenter extends NavbarPresenter
 {
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getOpenTagWrapper()
+    public function getOpenTagWrapper(): ?string
     {
         return PHP_EOL . '<ul class="nav navbar-nav navbar-right">' . PHP_EOL;
     }
 
     /**
-     * {@inheritdoc }.
+     * {@inheritdoc}
      */
-    public function getMenuWithDropDownWrapper($item)
+    public function getMenuWithDropDownWrapper(MenuItemContract $item): ?string
     {
         return '<li class="dropdown pull-right">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
