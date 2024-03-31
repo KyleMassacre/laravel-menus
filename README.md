@@ -1,8 +1,8 @@
 # Laravel Menus
 
-[//]: # ([![Latest Version on Packagist]&#40;https://img.shields.io/packagist/v/nwidart/laravel-menus.svg?style=flat-square&#41;]&#40;https://packagist.org/packages/nwidart/laravel-menus&#41;)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/kylemassacre/laravel-menus.svg?style=flat-square)](https://packagist.org/packages/kylemassacre/laravel-menus)
 
-[//]: # ([![Software License]&#40;https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square&#41;]&#40;LICENSE.md&#41;)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 [//]: # ([![Build Status]&#40;https://img.shields.io/travis/nWidart/laravel-menus/master.svg?style=flat-square&#41;]&#40;https://travis-ci.org/nWidart/laravel-menus&#41;)
 

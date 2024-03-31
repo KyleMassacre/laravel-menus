@@ -7,8 +7,7 @@ $finder = (new Finder())
     ->in(__DIR__)
     ->exclude([
         'vendor',
-    ])
-;
+    ]);
 
 return (new Config())
     ->setRules([
@@ -43,6 +42,7 @@ return (new Config())
         'no_blank_lines_after_phpdoc' => true,
         // Phpdocs should start and end with content, excluding the very first and last line of the docblocks.
         'phpdoc_trim' => true,
+        'normalize_index_brace' => true,
+        'whitespace_after_comma_in_array' => true,
     ])
-    ->setFinder($finder)
-;
+    ->setFinder($finder);
