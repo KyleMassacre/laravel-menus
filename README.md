@@ -4,13 +4,11 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-[//]: # ([![Build Status]&#40;https://img.shields.io/travis/nWidart/laravel-menus/master.svg?style=flat-square&#41;]&#40;https://travis-ci.org/nWidart/laravel-menus&#41;)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kylemassacre/laravel-menus/laravel.yml)
 
 [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/kylemassacre/laravel-menus.svg?style=flat-square)](https://scrutinizer-ci.com/g/kylemassacre/laravel-menus/?branch=master)
 
-[//]: # ([![SensioLabsInsight]&#40;https://img.shields.io/sensiolabs/i/6b187410-e586-465f-a137-2d1fbf7ac724.svg?style=flat-square&#41;]&#40;https://insight.sensiolabs.com/projects/6b187410-e586-465f-a137-2d1fbf7ac724&#41;)
-
-[![Quality Score](https://img.shields.io/scrutinizer/g/kylemassacre/laravel-menus.svg?style=flat-square)](https://scrutinizer-ci.com/g/kylemassacre/laravel-menus)
+![Scrutinizer quality (GitHub/Bitbucket) with branch](https://img.shields.io/scrutinizer/quality/g/kylemassacre/laravel-menus/master?style=flat-square)
 
 [![Total Downloads](https://img.shields.io/packagist/dt/kylemassacre/laravel-menus.svg?style=flat-square)](https://packagist.org/packages/kylemassacre/laravel-menus)
 
