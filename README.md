@@ -6,13 +6,13 @@
 
 [//]: # ([![Build Status]&#40;https://img.shields.io/travis/nWidart/laravel-menus/master.svg?style=flat-square&#41;]&#40;https://travis-ci.org/nWidart/laravel-menus&#41;)
 
-[//]: # ([![Scrutinizer Coverage]&#40;https://img.shields.io/scrutinizer/coverage/g/nWidart/laravel-menus.svg?style=flat-square&#41;]&#40;https://scrutinizer-ci.com/g/nWidart/laravel-menus/?branch=master&#41;)
+[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/kylemassacre/laravel-menus.svg?style=flat-square)](https://scrutinizer-ci.com/g/kylemassacre/laravel-menus/?branch=master)
 
 [//]: # ([![SensioLabsInsight]&#40;https://img.shields.io/sensiolabs/i/6b187410-e586-465f-a137-2d1fbf7ac724.svg?style=flat-square&#41;]&#40;https://insight.sensiolabs.com/projects/6b187410-e586-465f-a137-2d1fbf7ac724&#41;)
 
-[//]: # ([![Quality Score]&#40;https://img.shields.io/scrutinizer/g/nWidart/laravel-menus.svg?style=flat-square&#41;]&#40;https://scrutinizer-ci.com/g/nWidart/laravel-menus&#41;)
+[![Quality Score](https://img.shields.io/scrutinizer/g/kylemassacre/laravel-menus.svg?style=flat-square)](https://scrutinizer-ci.com/g/kylemassacre/laravel-menus)
 
-[//]: # ([![Total Downloads]&#40;https://img.shields.io/packagist/dt/nwidart/laravel-menus.svg?style=flat-square&#41;]&#40;https://packagist.org/packages/nwidart/laravel-menus&#41;)
+[![Total Downloads](https://img.shields.io/packagist/dt/kylemassacre/laravel-menus.svg?style=flat-square)](https://packagist.org/packages/kylemassacre/laravel-menus)
 
 
 | **Laravel** | **laravel-menus** |

@@ -7,3 +7,9 @@ coding_style:
 tools:
     external_code_coverage: true
     php_code_coverage: true
+build:
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
