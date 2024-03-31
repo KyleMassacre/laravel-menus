@@ -1,14 +1,16 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+
+$finder = (new Finder())
     ->in(__DIR__)
     ->exclude([
         'vendor',
     ])
 ;
 
-return PhpCsFixer\Config::create()
-    ->setFinder($finder)
+return (new Config())
     ->setRules([
         '@PSR2' => true,
         // Concatenation should be used with at least one whitespace around.
@@ -16,9 +18,9 @@ return PhpCsFixer\Config::create()
         // Unused use statements must be removed.
         'ordered_imports' => true,
         // Removes extra empty lines.
-        'no_extra_consecutive_blank_lines' => true,
+        'no_extra_blank_lines' => true,
         // An empty line feed should precede a return statement.
-        'blank_line_before_return' => true,
+        'blank_line_before_statement' => true,
         // Unused use statements must be removed.
         'no_unused_imports' => true,
         // Remove trailing whitespace at the end of blank lines.
@@ -34,7 +36,7 @@ return PhpCsFixer\Config::create()
         // Remove duplicated semicolons.
         'no_empty_statement' => true,
         // PHP multi-line arrays should have a trailing comma.
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => true,
         // There should be no empty lines after class opening brace.
         'no_blank_lines_after_class_opening' => true,
         // There should not be blank lines between docblock and the documented element.
@@ -42,4 +44,5 @@ return PhpCsFixer\Config::create()
         // Phpdocs should start and end with content, excluding the very first and last line of the docblocks.
         'phpdoc_trim' => true,
     ])
+    ->setFinder($finder)
 ;

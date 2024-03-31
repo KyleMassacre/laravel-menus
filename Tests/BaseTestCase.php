@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Menus\Tests;
+namespace KyleMassacre\Menus\Tests;
 
 use Collective\Html\HtmlServiceProvider;
-use Nwidart\Menus\MenusServiceProvider;
+use KyleMassacre\Menus\MenusServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class BaseTestCase extends OrchestraTestCase
@@ -32,12 +32,12 @@ abstract class BaseTestCase extends OrchestraTestCase
     {
         $app['config']->set('menus', [
             'styles' => [
-                'navbar' => \Nwidart\Menus\Presenters\Bootstrap\NavbarPresenter::class,
-                'navbar-right' => \Nwidart\Menus\Presenters\Bootstrap\NavbarRightPresenter::class,
-                'nav-pills' => \Nwidart\Menus\Presenters\Bootstrap\NavPillsPresenter::class,
-                'nav-tab' => \Nwidart\Menus\Presenters\Bootstrap\NavTabPresenter::class,
-                'sidebar' => \Nwidart\Menus\Presenters\Bootstrap\SidebarMenuPresenter::class,
-                'navmenu' => \Nwidart\Menus\Presenters\Bootstrap\NavMenuPresenter::class,
+                'navbar' => \KyleMassacre\Menus\Presenters\Bootstrap\NavbarPresenter::class,
+                'navbar-right' => \KyleMassacre\Menus\Presenters\Bootstrap\NavbarRightPresenter::class,
+                'nav-pills' => \KyleMassacre\Menus\Presenters\Bootstrap\NavPillsPresenter::class,
+                'nav-tab' => \KyleMassacre\Menus\Presenters\Bootstrap\NavTabPresenter::class,
+                'sidebar' => \KyleMassacre\Menus\Presenters\Bootstrap\SidebarMenuPresenter::class,
+                'navmenu' => \KyleMassacre\Menus\Presenters\Bootstrap\NavMenuPresenter::class,
             ],
 
             'ordering' => false,

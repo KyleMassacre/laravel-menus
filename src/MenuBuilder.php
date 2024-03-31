@@ -1,12 +1,12 @@
 <?php
 
-namespace Nwidart\Menus;
+namespace KyleMassacre\Menus;
 
 use Countable;
-use Illuminate\Support\Arr;
-use Nwidart\Menus\Traits\CanHide;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Support\Arr;
 use Illuminate\View\Factory as ViewFactory;
+use KyleMassacre\Menus\Traits\CanHide;
 
 class MenuBuilder implements Countable
 {
@@ -123,7 +123,7 @@ class MenuBuilder implements Countable
      *
      * @param  string $key
      * @param  string $value
-     * @return \Nwidart\Menus\MenuItem
+     * @return \KyleMassacre\Menus\MenuItem
      */
     public function findBy($key, $value)
     {
@@ -197,7 +197,7 @@ class MenuBuilder implements Countable
     /**
      * Get presenter instance.
      *
-     * @return \Nwidart\Menus\Presenters\PresenterInterface
+     * @return \KyleMassacre\Menus\Presenters\PresenterInterface
      */
     public function getPresenter()
     {
@@ -327,7 +327,7 @@ class MenuBuilder implements Countable
      *
      * @param array $attributes
      *
-     * @return \Nwidart\Menus\MenuItem
+     * @return \KyleMassacre\Menus\MenuItem
      */
     public function add(array $attributes = array())
     {
@@ -450,7 +450,7 @@ class MenuBuilder implements Countable
      * Add new divider item.
      *
      * @param int $order
-     * @return \Nwidart\Menus\MenuItem
+     * @return \KyleMassacre\Menus\MenuItem
      */
     public function addDivider($order = null)
     {
@@ -459,10 +459,21 @@ class MenuBuilder implements Countable
         return $this;
     }
 
+    public function addBadge(string $type, $text)
+    {
+        $properties = array(
+            'type' => $type,
+            'text' => $text,
+            'name' => 'badge',
+        );
+
+        return $this->add($properties);
+    }
+
     /**
      * Add new header item.
      *
-     * @return \Nwidart\Menus\MenuItem
+     * @return \KyleMassacre\Menus\MenuItem
      */
     public function addHeader($title, $order = null)
     {

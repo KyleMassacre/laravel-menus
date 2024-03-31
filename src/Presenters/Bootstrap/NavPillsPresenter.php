@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Menus\Presenters\Bootstrap;
+namespace KyleMassacre\Menus\Presenters\Bootstrap;
 
 class NavPillsPresenter extends NavbarPresenter
 {

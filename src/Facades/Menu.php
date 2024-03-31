@@ -1,10 +1,10 @@
 <?php
 
-namespace Nwidart\Menus\Facades;
+namespace KyleMassacre\Menus\Facades;
 
 use Closure;
 use Illuminate\Support\Facades\Facade;
-use Nwidart\Menus\MenuBuilder;
+use KyleMassacre\Menus\MenuBuilder;
 
 /**
  * @method static MenuBuilder make($name, Closure $callback) Make new menu.

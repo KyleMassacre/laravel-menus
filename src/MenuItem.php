@@ -1,13 +1,13 @@
 <?php
 
-namespace Nwidart\Menus;
+namespace KyleMassacre\Menus;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Nwidart\Menus\Traits\CanHide;
 use Collective\Html\HtmlFacade as HTML;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Contracts\Support\Arrayable as ArrayableContract;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Str;
+use KyleMassacre\Menus\Traits\CanHide;
 
 /**
  * @property string url
@@ -19,6 +19,7 @@ use Illuminate\Contracts\Support\Arrayable as ArrayableContract;
  * @property array attributes
  * @property bool active
  * @property int order
+ * @property array badge
  */
 class MenuItem implements ArrayableContract
 {
@@ -53,6 +54,8 @@ class MenuItem implements ArrayableContract
         'active',
         'order',
         'hideWhen',
+        'badge',
+        'class',
     );
 
     /**
@@ -297,6 +300,19 @@ class MenuItem implements ArrayableContract
         return $this->addHeader($title);
     }
 
+    public function addBadge(string $type, $text)
+    {
+        $properties = array(
+            'type' => $type,
+            'text' => $text,
+            'name' => 'badge',
+        );
+        $item = static::make($properties);
+        $this->badge = $properties;
+
+        return $item;
+    }
+
     /**
      * Get childs.
      *
@@ -337,6 +353,20 @@ class MenuItem implements ArrayableContract
     public function getRequest()
     {
         return ltrim(str_replace(url('/'), '', $this->getUrl()), '/');
+    }
+
+    /**
+     * @param string $type
+     * @param $text
+     */
+    public function getBadge()
+    {
+        if($this->hasBadge()) {
+            extract($this->badge);
+
+            return '<span class="' . $type . '">' . $text . '</span>';
+        }
+        //dd('badge is null');
     }
 
     /**
@@ -584,6 +614,11 @@ class MenuItem implements ArrayableContract
         $this->order = $order;
 
         return $this;
+    }
+
+    public function hasBadge()
+    {
+        return !empty($this->badge);
     }
 
     /**

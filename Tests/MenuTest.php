@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Menus\Tests;
+namespace KyleMassacre\Menus\Tests;
 
-use Nwidart\Menus\Menu;
-use Nwidart\Menus\MenuBuilder;
+use KyleMassacre\Menus\Menu;
+use KyleMassacre\Menus\MenuBuilder;
 
 class MenuTest extends BaseTestCase
 {
@@ -138,9 +138,9 @@ TEXT;
     public function it_still_generates_empty_menu_after_adding_dropdown()
     {
         $this->menu->create('test', function (MenuBuilder $menu) {
-            $menu->dropdown('Test', function($sub) {
+            $menu->dropdown('Test', function ($sub) {
 
-            })->hideWhen(function() {
+            })->hideWhen(function () {
                 return true;
             });
         });
@@ -161,7 +161,7 @@ TEXT;
     {
         $this->menu->create('test', function (MenuBuilder $menu) {
             $menu->url('/', 'Test')
-                ->hideWhen(function() {
+                ->hideWhen(function () {
                     return true;
                 });
         });

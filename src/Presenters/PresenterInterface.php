@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Menus\Presenters;
+namespace KyleMassacre\Menus\Presenters;
 
-use Nwidart\Menus\MenuItem;
+use KyleMassacre\Menus\MenuItem;
 
 interface PresenterInterface
 {
@@ -23,11 +23,11 @@ interface PresenterInterface
     /**
      * Get menu tag without dropdown wrapper.
      *
-     * @param \Nwidart\Menus\MenuItem $item
+     * @param MenuItem $item
      *
      * @return string
      */
-    public function getMenuWithoutDropdownWrapper($item);
+    public function getMenuWithoutDropdownWrapper(MenuItem $item);
 
     /**
      * Get divider tag wrapper.
@@ -39,7 +39,7 @@ interface PresenterInterface
     /**
      * Get divider tag wrapper.
      *
-     * @param \Nwidart\Menus\MenuItem $item
+     * @param MenuItem $item
      *
      * @return mixed
      */
@@ -48,16 +48,16 @@ interface PresenterInterface
     /**
      * Get menu tag with dropdown wrapper.
      *
-     * @param \Nwidart\Menus\MenuItem $item
+     * @param MenuItem $item
      *
      * @return string
      */
-    public function getMenuWithDropDownWrapper($item);
+    public function getMenuWithDropDownWrapper(MenuItem $item);
 
     /**
      * Get child menu items.
      *
-     * @param \Nwidart\Menus\MenuItem $item
+     * @param MenuItem $item
      *
      * @return string
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Menus\Traits;
+namespace KyleMassacre\Menus\Traits;
 
 use Closure;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Menus\Presenters\Foundation;
+namespace KyleMassacre\Menus\Presenters\Foundation;
 
-use Nwidart\Menus\Presenters\Presenter;
+use KyleMassacre\Menus\Presenters\Presenter;
 
 class ZurbMenuPresenter extends Presenter
 {

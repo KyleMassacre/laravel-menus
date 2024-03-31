@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Menus;
+namespace KyleMassacre\Menus;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
