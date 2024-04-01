@@ -11,6 +11,7 @@ return [
         'navmenu' => \KyleMassacre\Menus\Presenters\Bootstrap\NavMenuPresenter::class,
         'adminlte' => \KyleMassacre\Menus\Presenters\Admin\AdminltePresenter::class,
         'zurbmenu' => \KyleMassacre\Menus\Presenters\Foundation\ZurbMenuPresenter::class,
+        'metronic' => \KyleMassacre\Menus\Presenters\Metronic\MetronicHorizontalMenuPresenter::class,
     ],
 
     'ordering' => false,

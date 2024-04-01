@@ -9,15 +9,15 @@ trait CanHide
     /**
      * @var Closure
      */
-    protected $hideWhen;
+    protected Closure $hideWhen;
 
     /**
      * Set hide condition for current menu item.
      *
      * @param  Closure
-     * @return boolean
+     * @return self
      */
-    public function hideWhen(Closure $callback)
+    public function hideWhen(Closure $callback): self
     {
         $this->hideWhen = $callback;
 
@@ -29,7 +29,7 @@ trait CanHide
      *
      * @return boolean
      */
-    public function hidden()
+    public function hidden(): bool
     {
         if (is_null($this->hideWhen)) {
             return false;

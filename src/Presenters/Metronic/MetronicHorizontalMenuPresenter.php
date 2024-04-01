@@ -6,8 +6,9 @@
  * Description: Generate horizontal menu to metronic theme
  */
 
-namespace App\Presenters;
+namespace KyleMassacre\Menus\Presenters\Metronic;
 
+use KyleMassacre\Menus\Contracts\MenuItemContract;
 use KyleMassacre\Menus\Presenters\Presenter;
 
 class MetronicHorizontalMenuPresenter extends Presenter
@@ -15,7 +16,7 @@ class MetronicHorizontalMenuPresenter extends Presenter
     /**
      * {@inheritdoc }
      */
-    public function getOpenTagWrapper()
+    public function getOpenTagWrapper(): ?string
     {
         return PHP_EOL . '<ul class="m-menu__nav  m-menu__nav--submenu-arrow ">' . PHP_EOL;
     }
@@ -23,7 +24,7 @@ class MetronicHorizontalMenuPresenter extends Presenter
     /**
      * {@inheritdoc }
      */
-    public function getCloseTagWrapper()
+    public function getCloseTagWrapper(): ?string
     {
         return PHP_EOL . '</ul>' . PHP_EOL;
     }
@@ -31,7 +32,7 @@ class MetronicHorizontalMenuPresenter extends Presenter
     /**
      * {@inheritdoc }
      */
-    public function getMenuWithoutDropdownWrapper($item)
+    public function getMenuWithoutDropdownWrapper(MenuItemContract $item): ?string
     {
         return '<li ' . $this->getActiveState($item) . '>' . $item->getIcon() . '<a href="' . $item->getUrl() . '" class="m-menu__link"><span class="m-menu__item-here"></span><span class="m-menu__link-text">' . $item->title . '</span></a></li>';
     }
@@ -39,7 +40,7 @@ class MetronicHorizontalMenuPresenter extends Presenter
     /**
      * {@inheritdoc }
      */
-    public function getActiveState($item)
+    public function getActiveState(MenuItemContract $item): string
     {
         return \Request::is($item->getRequest()) ? ' class="m-menu__item  m-menu__item--rel active"' : 'class="m-menu__item  m-menu__item--rel"';
     }
@@ -47,7 +48,7 @@ class MetronicHorizontalMenuPresenter extends Presenter
     /**
      * {@inheritdoc }
      */
-    public function getDividerWrapper()
+    public function getDividerWrapper(): ?string
     {
         return '';
     }
@@ -55,7 +56,7 @@ class MetronicHorizontalMenuPresenter extends Presenter
     /**
      * {@inheritdoc }
      */
-    public function getMenuWithDropDownWrapper($item)
+    public function getMenuWithDropDownWrapper(MenuItemContract $item): ?string
     {
         if ($item->title == '...') {
             return '<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" aria-haspopup="true">
@@ -91,7 +92,7 @@ class MetronicHorizontalMenuPresenter extends Presenter
         }
     }
 
-    public function getMultiLevelDropdownWrapper($item)
+    public function getMultiLevelDropdownWrapper(MenuItemContract $item): string
     {
         return '<li class="m-menu__item  m-menu__item--submenu"  data-menu-submenu-toggle="hover" data-redirect="true" aria-haspopup="true">
                             <a  href="#" class="m-menu__link m-menu__toggle">

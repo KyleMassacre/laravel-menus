@@ -86,7 +86,7 @@ class MenuItemTest extends BaseTestCase
         $menuItem = MenuItem::make(['title' => 'Parent Item']);
         $menuItem->child(['title' => 'Child Item']);
 
-        $this->assertCount(1, $menuItem->getChilds());
+        $this->assertCount(1, $menuItem->getChildren());
     }
 
     /** @test */
@@ -97,7 +97,7 @@ class MenuItemTest extends BaseTestCase
         $menuItem->child(['title' => 'Child Item', 'order' => 10]);
         $menuItem->child(['title' => 'First Child Item', 'order' => 1]);
 
-        $children = $menuItem->getChilds();
+        $children = $menuItem->getChildren();
         $this->assertEquals('First Child Item', $children[1]->title);
         $this->assertEquals('Child Item', $children[0]->title);
     }
@@ -110,8 +110,8 @@ class MenuItemTest extends BaseTestCase
             $sub->url('settings/account', 'Account');
             $sub->url('settings/password', 'Password');
         });
-        $this->assertCount(1, $menuItem->getChilds());
-        $this->assertCount(2, $menuItem->getChilds()[0]->getChilds());
+        $this->assertCount(1, $menuItem->getChildren());
+        $this->assertCount(2, $menuItem->getChildren()[0]->getChilds());
     }
 
     /** @test */
@@ -121,7 +121,7 @@ class MenuItemTest extends BaseTestCase
         $menuItem->dropdown('Dropdown item', function (MenuItem $sub) {
             $sub->route('settings.account', 'Account', ['user_id' => 1]);
         });
-        $children = $menuItem->getChilds()[0]->getChilds();
+        $children = $menuItem->getChildren()[0]->getChilds();
 
         $this->assertCount(1, $children);
         $childMenuItem = Arr::first($children);
@@ -136,7 +136,7 @@ class MenuItemTest extends BaseTestCase
         $menuItem->dropdown('Dropdown item', function (MenuItem $sub) {
             $sub->route('settings.account', 'Account', ['user_id' => 1], 1, ['my-attr' => 'value']);
         });
-        $children = $menuItem->getChilds()[0]->getChilds();
+        $children = $menuItem->getChildren()[0]->getChilds();
 
         $this->assertCount(1, $children);
         $childMenuItem = Arr::first($children);
@@ -153,7 +153,7 @@ class MenuItemTest extends BaseTestCase
         $menuItem->dropdown('Dropdown item', function (MenuItem $sub) {
             $sub->url('settings/account', 'Account');
         });
-        $children = $menuItem->getChilds()[0]->getChilds();
+        $children = $menuItem->getChildren()[0]->getChilds();
 
         $this->assertCount(1, $children);
         $childMenuItem = Arr::first($children);
@@ -168,7 +168,7 @@ class MenuItemTest extends BaseTestCase
         $menuItem->dropdown('Dropdown item', function (MenuItem $sub) {
             $sub->url('settings/account', 'Account', 1, ['my-attr' => 'value']);
         });
-        $children = $menuItem->getChilds()[0]->getChilds();
+        $children = $menuItem->getChildren()[0]->getChilds();
 
         $this->assertCount(1, $children);
         $childMenuItem = Arr::first($children);
@@ -187,7 +187,7 @@ class MenuItemTest extends BaseTestCase
             $sub->divider();
         });
 
-        $children = $menuItem->getChilds()[0]->getChilds();
+        $children = $menuItem->getChildren()[0]->getChilds();
 
         $this->assertCount(2, $children);
         $dividerMenuItem = $children[1];
@@ -204,7 +204,7 @@ class MenuItemTest extends BaseTestCase
             $sub->url('settings/account', 'Account');
         });
 
-        $children = $menuItem->getChilds()[0]->getChilds();
+        $children = $menuItem->getChildren()[0]->getChilds();
 
         $this->assertCount(2, $children);
         $headerItem = $children[0];
@@ -229,7 +229,7 @@ class MenuItemTest extends BaseTestCase
         $menuItem->dropdown('Dropdown item', function (MenuItem $sub) {
             $sub->route('settings.account', 'Account');
         });
-        $children = $menuItem->getChilds()[0]->getChilds();
+        $children = $menuItem->getChildren()[0]->getChilds();
         $childMenuItem = Arr::first($children);
 
         $this->assertEquals('http://localhost/settings/account', $childMenuItem->getUrl());
