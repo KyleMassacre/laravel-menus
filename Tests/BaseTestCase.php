@@ -2,7 +2,6 @@
 
 namespace KyleMassacre\Menus\Tests;
 
-use Collective\Html\HtmlServiceProvider;
 use KyleMassacre\Menus\MenusServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
@@ -15,10 +14,9 @@ abstract class BaseTestCase extends OrchestraTestCase
         // $this->setUpDatabase();
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
-            HtmlServiceProvider::class,
             MenusServiceProvider::class,
         ];
     }
@@ -28,7 +26,7 @@ abstract class BaseTestCase extends OrchestraTestCase
      *
      * @param \Illuminate\Foundation\Application $app
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('menus', [
             'styles' => [

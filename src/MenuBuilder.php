@@ -6,6 +6,7 @@ use Countable;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Arr;
 use Illuminate\View\Factory as ViewFactory;
+use Illuminate\View\View;
 use KyleMassacre\Menus\Traits\CanHide;
 
 class MenuBuilder implements Countable
@@ -377,9 +378,9 @@ class MenuBuilder implements Countable
      * @param array $parameters
      * @param array $attributes
      *
-     * @return static
+     * @return MenuItem
      */
-    public function route($route, $title, $parameters = array(), $order = null, $attributes = array())
+    public function route($route, $title, array $parameters = array(), $order = null, array $attributes = array()): MenuItem
     {
         if (func_num_args() == 4) {
             $arguments = func_get_args();
@@ -409,7 +410,7 @@ class MenuBuilder implements Countable
      *
      * @return string
      */
-    protected function formatUrl($url)
+    protected function formatUrl(string $url): string
     {
         $uri = !is_null($this->prefixUrl) ? $this->prefixUrl . $url : $url;
 
@@ -419,13 +420,14 @@ class MenuBuilder implements Countable
     /**
      * Register new menu item using url.
      *
-     * @param $url
-     * @param $title
+     * @param string $url
+     * @param string $title
+     * @param int $order
      * @param array $attributes
      *
-     * @return static
+     * @return MenuItem|MenuBuilder
      */
-    public function url($url, $title, $order = 0, $attributes = array())
+    public function url(string $url, string $title, int $order = 0, array $attributes = array()): MenuItem|static
     {
         if (func_num_args() == 3) {
             $arguments = func_get_args();
@@ -449,17 +451,17 @@ class MenuBuilder implements Countable
     /**
      * Add new divider item.
      *
-     * @param int $order
-     * @return \KyleMassacre\Menus\MenuItem
+     * @param int|null $order
+     * @return MenuBuilder
      */
-    public function addDivider($order = null)
+    public function addDivider(int $order = null): static
     {
         $this->items[] = new MenuItem(array('name' => 'divider', 'order' => $order));
 
         return $this;
     }
 
-    public function addBadge(string $type, $text)
+    public function addBadge(string $type, $text): MenuItem
     {
         $properties = array(
             'type' => $type,
@@ -473,9 +475,11 @@ class MenuBuilder implements Countable
     /**
      * Add new header item.
      *
-     * @return \KyleMassacre\Menus\MenuItem
+     * @param $title
+     * @param null $order
+     * @return MenuBuilder
      */
-    public function addHeader($title, $order = null)
+    public function addHeader($title, $order = null): static
     {
         $this->items[] = new MenuItem(array(
             'name' => 'header',
@@ -493,7 +497,7 @@ class MenuBuilder implements Countable
      *
      * @return $this
      */
-    public function header($title)
+    public function header(string $title): MenuItem|static
     {
         return $this->addHeader($title);
     }
@@ -503,7 +507,7 @@ class MenuBuilder implements Countable
      *
      * @return $this
      */
-    public function divider()
+    public function divider(): MenuItem|static
     {
         return $this->addDivider();
     }
@@ -513,7 +517,7 @@ class MenuBuilder implements Countable
      *
      * @return int
      */
-    public function count()
+    public function count():int
     {
         return count($this->items);
     }
@@ -521,7 +525,7 @@ class MenuBuilder implements Countable
     /**
      * Empty the current menu items.
      */
-    public function destroy()
+    public function destroy(): static
     {
         $this->items = array();
 
@@ -531,11 +535,11 @@ class MenuBuilder implements Countable
     /**
      * Render the menu to HTML tag.
      *
-     * @param string $presenter
+     * @param string|null $presenter
      *
-     * @return string
+     * @return string|View
      */
-    public function render($presenter = null)
+    public function render(string $presenter = null): string|View
     {
         $this->resolveItems($this->items);
 
@@ -557,9 +561,10 @@ class MenuBuilder implements Countable
     /**
      * Render menu via view presenter.
      *
-     * @return \Illuminate\View\View
+     * @param string|null $presenter
+     * @return View
      */
-    public function renderView($presenter = null)
+    public function renderView(string $presenter = null): \Illuminate\View\View
     {
         return $this->views->make($presenter ?: $this->view, [
             'items' => $this->getOrderedItems(),
@@ -571,7 +576,7 @@ class MenuBuilder implements Countable
      *
      * @return array
      */
-    public function getItems()
+    public function getItems(): array
     {
         return $this->items;
     }
@@ -581,7 +586,7 @@ class MenuBuilder implements Countable
      *
      * @return \Illuminate\Support\Collection
      */
-    public function toCollection()
+    public function toCollection(): \Illuminate\Support\Collection
     {
         return collect($this->items);
     }
@@ -591,7 +596,7 @@ class MenuBuilder implements Countable
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->toCollection()->toArray();
     }
@@ -601,7 +606,7 @@ class MenuBuilder implements Countable
      *
      * @return self
      */
-    public function enableOrdering()
+    public function enableOrdering(): static
     {
         $this->ordering = true;
 
@@ -613,7 +618,7 @@ class MenuBuilder implements Countable
      *
      * @return self
      */
-    public function disableOrdering()
+    public function disableOrdering(): static
     {
         $this->ordering = false;
 
@@ -625,7 +630,7 @@ class MenuBuilder implements Countable
      *
      * @return array
      */
-    public function getOrderedItems()
+    public function getOrderedItems(): array
     {
         if (config('menus.ordering') || $this->ordering) {
             return $this->toCollection()->sortBy(function ($item) {
@@ -641,7 +646,7 @@ class MenuBuilder implements Countable
      *
      * @return string
      */
-    protected function renderMenu()
+    protected function renderMenu(): string
     {
         $presenter = $this->getPresenter();
         $menu = $presenter->getOpenTagWrapper();

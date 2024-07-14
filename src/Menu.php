@@ -14,15 +14,15 @@ class Menu implements Countable
      *
      * @var array
      */
-    protected $menus = array();
+    protected array $menus = array();
     /**
      * @var Repository
      */
-    private $config;
+    private Repository $config;
     /**
      * @var Factory
      */
-    private $views;
+    private Factory $views;
 
     /**
      * The constructor.
@@ -44,7 +44,7 @@ class Menu implements Countable
      *
      * @return \KyleMassacre\Menus\MenuBuilder
      */
-    public function make($name, \Closure $callback)
+    public function make(string $name, \Closure $callback): MenuBuilder|null
     {
         return $this->create($name, $callback);
     }
@@ -57,7 +57,7 @@ class Menu implements Countable
      *
      * @return \KyleMassacre\Menus\MenuBuilder
      */
-    public function create($name, Closure $resolver)
+    public function create(string $name, Closure $resolver): MenuBuilder|null
     {
         $builder = new MenuBuilder($name, $this->config);
 
@@ -75,7 +75,7 @@ class Menu implements Countable
      *
      * @return bool
      */
-    public function has($name)
+    public function has(string $name): bool
     {
         return array_key_exists($name, $this->menus);
     }
@@ -87,7 +87,7 @@ class Menu implements Countable
      *
      * @return string|null
      */
-    public function instance($name)
+    public function instance(string $name): MenuBuilder|null
     {
         return $this->has($name) ? $this->menus[$name] : null;
     }
@@ -99,7 +99,7 @@ class Menu implements Countable
      * @param  Closure  $callback
      * @return void
      */
-    public function modify($name, Closure $callback)
+    public function modify(string $name, Closure $callback): void
     {
         $menu = collect($this->menus)->filter(function ($menu) use ($name) {
             return $menu->getName() == $name;
@@ -112,11 +112,11 @@ class Menu implements Countable
      * Render the menu tag by given name.
      *
      * @param string $name
-     * @param string $presenter
-     *
+     * @param string|null $presenter
+     * @param array $bindings
      * @return string|null
      */
-    public function get($name, $presenter = null, $bindings = array())
+    public function get(string $name, string $presenter = null, array $bindings = array()): ?string
     {
         return $this->has($name) ?
             $this->menus[$name]->setBindings($bindings)->render($presenter) : null;
@@ -125,12 +125,12 @@ class Menu implements Countable
     /**
      * Render the menu tag by given name.
      *
-     * @param $name
-     * @param null $presenter
-     *
-     * @return string
+     * @param string $name
+     * @param null|string $presenter
+     * @param array $bindings
+     * @return string|null
      */
-    public function render($name, $presenter = null, $bindings = array())
+    public function render(string $name, string $presenter = null, array $bindings = array()): ?string
     {
         return $this->get($name, $presenter, $bindings);
     }
@@ -140,7 +140,7 @@ class Menu implements Countable
      *
      * @return mixed
      */
-    public function style()
+    public function style(): mixed
     {
         return $this->views->make('menus::style')->render();
     }
@@ -150,7 +150,7 @@ class Menu implements Countable
      *
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         return $this->menus;
     }
@@ -160,7 +160,7 @@ class Menu implements Countable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->menus);
     }
@@ -168,7 +168,7 @@ class Menu implements Countable
     /**
      * Empty the current menus.
      */
-    public function destroy()
+    public function destroy(): void
     {
         $this->menus = array();
     }
