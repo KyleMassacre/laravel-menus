@@ -3,11 +3,11 @@
 namespace KyleMassacre\Menus;
 
 use AllowDynamicProperties;
-use Collective\Html\HtmlFacade as HTML;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Request;
 use KyleMassacre\Menus\Contracts\MenuItemContract;
 use KyleMassacre\Menus\Traits\CanHide;
+use Spatie\Html\Attributes;
 
 /**
  * @property string url
@@ -321,7 +321,9 @@ use KyleMassacre\Menus\Traits\CanHide;
 
         Arr::forget($attributes, ['active', 'icon']);
 
-        return HTML::attributes($attributes);
+        return (new Attributes)
+            ->setAttributes($attributes)
+            ->render();
     }
 
     /**

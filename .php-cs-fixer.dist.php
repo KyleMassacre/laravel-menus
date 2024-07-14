@@ -1,15 +1,15 @@
 <?php
 
-use PhpCsFixer\Config;
-use PhpCsFixer\Finder;
+use PhpCsFixer\Config as FixerConfig;
+use PhpCsFixer\Finder as FixerFinder;
 
-$finder = (new Finder())
+$finder = (new FixerFinder())
     ->in(__DIR__)
     ->exclude([
         'vendor',
     ]);
 
-return (new Config())
+return (new FixerConfig())
     ->setRules([
         '@PSR2' => true,
         // Concatenation should be used with at least one whitespace around.

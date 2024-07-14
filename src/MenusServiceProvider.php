@@ -2,8 +2,8 @@
 
 namespace KyleMassacre\Menus;
 
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Html\HtmlServiceProvider;
 
 class MenusServiceProvider extends ServiceProvider
 {
@@ -50,14 +50,7 @@ class MenusServiceProvider extends ServiceProvider
      */
     private function registerHtmlPackage()
     {
-        $this->app->register('Collective\Html\HtmlServiceProvider');
-
-        $aliases = [
-            'HTML' => 'Collective\Html\HtmlFacade',
-            'Form' => 'Collective\Html\FormFacade',
-        ];
-
-        AliasLoader::getInstance($aliases)->register();
+        $this->app->register(HtmlServiceProvider::class);
     }
 
     /**
