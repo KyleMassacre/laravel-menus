@@ -187,7 +187,7 @@ abstract class MenuItemContract implements ArrayableContract
     public function __get(string $key): ?string
     {
         $return = null;
-        if(property_exists($this, $key)) {
+        if (property_exists($this, $key)) {
             $return = $this->$key ?? null;
         }
 
@@ -196,7 +196,7 @@ abstract class MenuItemContract implements ArrayableContract
 
     public function __call($name, $arguments)
     {
-        if(str($name)->is('is*')) {
+        if (str($name)->is('is*')) {
             $slice = str($name)->after('is')->lower();
 
             return $this->is($slice);

@@ -38,7 +38,7 @@ class MenusServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerHtmlPackage();
+        $this->registerSpatieHtmlPackage();
 
         $this->app->singleton('menus', function ($app) {
             return new Menu($app['view'], $app['config']);
@@ -46,15 +46,15 @@ class MenusServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register "iluminate/html" package.
+     * Register "spatie/laravel-html" package.
      */
-    private function registerHtmlPackage()
+    private function registerSpatieHtmlPackage()
     {
-        $this->app->register('Collective\Html\HtmlServiceProvider');
+        $this->app->register('Spatie\Html\HtmlServiceProvider');
 
         $aliases = [
-            'HTML' => 'Collective\Html\HtmlFacade',
-            'Form' => 'Collective\Html\FormFacade',
+            'HTML' => 'Spatie\Html\Facades\Html',
+            'Form' => 'Spatie\Html\Facades\Form',
         ];
 
         AliasLoader::getInstance($aliases)->register();

@@ -3,11 +3,11 @@
 namespace KyleMassacre\Menus;
 
 use AllowDynamicProperties;
-use Collective\Html\HtmlFacade as HTML;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Request;
 use KyleMassacre\Menus\Contracts\MenuItemContract;
 use KyleMassacre\Menus\Traits\CanHide;
+use Spatie\Html\Facades\Html as HTML;
 
 /**
  * @property string url
@@ -274,7 +274,7 @@ use KyleMassacre\Menus\Traits\CanHide;
      */
     public function getBadge(): string
     {
-        if($this->hasBadge()) {
+        if ($this->hasBadge()) {
             extract($this->badge);
 
             return '<span class="' . $type . '">' . $text . '</span>';
@@ -313,15 +313,26 @@ use KyleMassacre\Menus\Traits\CanHide;
     /**
      * Get HTML attribute data.
      *
-     * @return mixed
+     * @return string
      */
-    public function getAttributes(): mixed
+    public function getAttributes(): string
     {
         $attributes = $this->attributes ?: [];
 
         Arr::forget($attributes, ['active', 'icon']);
 
-        return HTML::attributes($attributes);
+        $attributeString = collect($attributes)
+            ->map(function ($value, $key) {
+                if (is_bool($value)) {
+                    return $value ? $key : '';
+                }
+
+                return $key . '="' . e($value) . '"';
+            })
+            ->filter()
+            ->implode(' ');
+
+        return $attributeString ? ' ' . $attributeString : '';
     }
 
     /**
