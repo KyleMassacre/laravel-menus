@@ -646,11 +646,11 @@ class MenuBuilder implements Countable
         $presenter = $this->getPresenter();
         $menu = $presenter->getOpenTagWrapper();
 
-        foreach ($this->getOrderedItems() as $item) {
-            if ($item->hidden() || $this->hidden()) {
-                continue;
-            }
+        $items = array_filter($this->getOrderedItems(), function ($item) {
+            return !$item->hidden();
+        });
 
+        foreach ($items as $item) {
             if ($item->hasSubMenu()) {
                 $menu .= $presenter->getMenuWithDropDownWrapper($item);
             } elseif ($item->isHeader()) {

@@ -3,8 +3,6 @@
 namespace KyleMassacre\Menus\Traits;
 
 use Closure;
-use KyleMassacre\Menus\MenuBuilder;
-use KyleMassacre\Menus\MenuItem;
 
 trait CanHide
 {
@@ -16,8 +14,8 @@ trait CanHide
     /**
      * Set hide condition for current menu item.
      *
-     * @param Closure $callback
-     * @return CanHide|MenuBuilder|MenuItem
+     * @param  Closure
+     * @return self
      */
     public function hideWhen(Closure $callback): self
     {
@@ -33,10 +31,10 @@ trait CanHide
      */
     public function hidden(): bool
     {
-        if (is_null($this->hideWhen)) {
+        if ($this->hideWhen == null) {
             return false;
         }
 
-        return call_user_func($this->hideWhen) == false;
+        return call_user_func($this->hideWhen) == true;
     }
 }

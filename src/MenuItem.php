@@ -2,7 +2,6 @@
 
 namespace KyleMassacre\Menus;
 
-use AllowDynamicProperties;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Request;
 use KyleMassacre\Menus\Contracts\MenuItemContract;
@@ -21,7 +20,7 @@ use Spatie\Html\Facades\Html as HTML;
  * @property int order
  * @property array badge
  */
-#[AllowDynamicProperties] class MenuItem extends MenuItemContract
+class MenuItem extends MenuItemContract
 {
     use CanHide;
 
@@ -279,6 +278,7 @@ use Spatie\Html\Facades\Html as HTML;
 
             return '<span class="' . $type . '">' . $text . '</span>';
         }
+        return '';
     }
 
     /**
@@ -443,6 +443,9 @@ use Spatie\Html\Facades\Html as HTML;
     {
         $inactive = $this->getInactiveAttribute();
 
+        if ($inactive === '1' || $inactive === '0') {
+            return (bool)$inactive;
+        }
         if (is_bool($inactive)) {
             return $inactive;
         }
@@ -461,7 +464,7 @@ use Spatie\Html\Facades\Html as HTML;
      */
     public function getActiveAttribute(): string
     {
-        return Arr::get($this->attributes, 'active');
+        return Arr::get($this->attributes, 'active', '');
     }
 
     /**
@@ -471,7 +474,7 @@ use Spatie\Html\Facades\Html as HTML;
      */
     public function getInactiveAttribute(): string
     {
-        return Arr::get($this->attributes, 'inactive');
+        return Arr::get($this->attributes, 'inactive', '');
     }
 
     /**
@@ -487,6 +490,9 @@ use Spatie\Html\Facades\Html as HTML;
 
         $active = $this->getActiveAttribute();
 
+        if ($active === '1' || $active === '0') {
+            return (bool)$active;
+        }
         if (is_bool($active)) {
             return $active;
         }
