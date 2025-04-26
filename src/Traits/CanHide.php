@@ -37,6 +37,6 @@ trait CanHide
             return false;
         }
 
-        return call_user_func($this->hideWhen) == true;
+        return call_user_func($this->hideWhen) == false;
     }
 }
