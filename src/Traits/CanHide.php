@@ -3,19 +3,21 @@
 namespace KyleMassacre\Menus\Traits;
 
 use Closure;
+use KyleMassacre\Menus\MenuBuilder;
+use KyleMassacre\Menus\MenuItem;
 
 trait CanHide
 {
     /**
      * @var Closure
      */
-    protected Closure $hideWhen;
+    protected ?Closure $hideWhen = null;
 
     /**
      * Set hide condition for current menu item.
      *
-     * @param  Closure
-     * @return self
+     * @param Closure $callback
+     * @return CanHide|MenuBuilder|MenuItem
      */
     public function hideWhen(Closure $callback): self
     {
