@@ -87,8 +87,8 @@ You'll find installation instructions and full documentation on https://nwidart.
 - [Kyle Ellis](https://github.com/kylemassacre)
 - [Nicolas Widart](https://github.com/nwidart)
 - [gravitano](https://github.com/gravitano)
-- [All Contributors](../../contributors)
+- [All Contributors](https://github.com/KyleMassacre/laravel-menus/graphs/contributors)
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/KyleMassacre/laravel-menus/blob/master/LICENSE.md) for more information.
